@@ -1,9 +1,15 @@
 import React from 'react'
 
-const Card = () => {
+const Card = ({ pokemon }) => {
     return (
-        <div>
-            <h1> Hello World </h1>
+        <div className='card mt-5 text-center rounded-0'>
+            <div className="card-header bg-orange">
+                <p className='text-dark font-weight-bold'># {pokemon.id}</p>
+            </div>
+            <img className='image mx-auto' src={pokemon.sprites.front_default} alt={pokemon.name} />
+            <div className="card-body">
+                <p className='text-dark font-weight-bold'>{pokemon.name}</p>
+            </div>
         </div>
     )
 }
