@@ -19,7 +19,7 @@ function App() {
     // Initial API call to get and set data in state
     async function fetchData() {
       let response = await getAllPokemon(initialURL)
-      setNextUrl(response.nest)
+      setNextUrl(response.next)
       setPrevUrl(response.prev)
       // Response is the api response, results is the name of the array in the API object
       await loadingPokemon(response.results)
@@ -27,6 +27,25 @@ function App() {
     }
     fetchData()
   }, [])
+
+  const nextPage = async () => {
+    setLoading(true);
+    let data = await getAllPokemon(nextUrl);
+    await loadingPokemon(data.results);
+    setNextUrl(data.next);
+    setPrevUrl(data.previous);
+    setLoading(false);
+  };
+
+  const prevPage = async () => {
+    if (!prevUrl) return;
+    setLoading(true);
+    let data = await getAllPokemon(prevUrl);
+    await loadingPokemon(data.results);
+    setNextUrl(data.next);
+    setPrevUrl(data.previous);
+    setLoading(false);
+  };
 
   // Iterate over the data and make a fetch request for each individual Pokemons Data
   const loadingPokemon = async (data) => {
@@ -43,6 +62,10 @@ function App() {
       <Navbar />
       { loading ? <h1>Loading...</h1> : (
         <>
+          <div className='btn-wrapper text-right mt-5'>
+            <button className='btn' onClick={prevPage}>Previous</button>
+            <button className='btn' onClick={nextPage}>Next</button>
+          </div>
           <div className="grid-container">
             {pokemonData.map((pokemon, index) => {
               return <Card  key={index} pokemon={pokemon}/>
