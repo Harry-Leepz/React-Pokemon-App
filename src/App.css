@@ -3,5 +3,23 @@
 body {
   background-color: rgb(37, 37, 37);
   font-family: "Poppins", sans-serif;
+}
+
+/* Text Css */
+
+.text-dark {
+  color: black;
+  margin: 0;
+}
+
+.text-light {
   color: #fafafa;
+  margin: 0;
+}
+
+/* Navbar Css */
+
+.navbar {
+  background-color: #f55a00;
+  background-image: linear-gradient(62deg, #e96519 0%, #ffb700 100%);
 }
