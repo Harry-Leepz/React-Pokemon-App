@@ -10,7 +10,9 @@ const Card = ({ pokemon }) => {
                 </div>
                 <img className='image mx-auto' src={pokemon.sprites.front_default} alt={pokemon.name} />
                 <div className="card-body">
-                    <p className='text-dark font-weight-bold'>{pokemon.name}</p>
+                    <p className='text-dark font-weight-bold'>{pokemon.name.split(' ')
+                                    .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+                                    .join(' ')}</p>
                 </div>
             </div>
         </Link>
