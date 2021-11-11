@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { getAllPokemon, getPokemon } from './services/Pokemon';
 import Pokedex from './components/pokemon/Pokedex';
 import Navbar from './components/layout/Navbar';
-// import Card from './components/pokemon/Card';
+import About from './components/layout/About';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -57,12 +58,19 @@ function App() {
   }
 
   return (
-
-      <div className="App">
+    <Router>
+      <div className="App">     
         <Navbar />
-        <Pokedex loading={loading} pokemonData={pokemonData}/>       
+        <div className="container-fluid">
+          <Switch>
+            <Route exact path='/'   render={(props) => (
+              <Pokedex loading={loading} pokemonData={pokemonData}/>
+            )} />
+            <Route exact path='/about' component={About} /> 
+          </Switch>
+        </div>           
       </div>
-
+    </Router> 
   );
 }
 
