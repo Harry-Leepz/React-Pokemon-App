@@ -4,8 +4,8 @@ const About = () => {
   return (
     <Fragment>
       <h1>About This App</h1>
-      <p>App to search GitHub Users and learn React</p>
-      <p>Version: 1.0.0</p>
+      <p>Literally the worst thing ever made</p>
+      <p>This is so bad, not even worth putting any copyright infringement</p>
     </Fragment>
   );
 };
