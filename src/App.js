@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { getAllPokemon, getPokemon } from './services/Pokemon';
+import Pokedex from './components/pokemon/Pokedex';
 import Navbar from './components/layout/Navbar';
-import Card from './components/pokemon/Card';
+// import Card from './components/pokemon/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-
-
 
 function App() {
   // State Variables
@@ -13,7 +12,7 @@ function App() {
   const [nextUrl, setNextUrl] = useState('');
   const [prevUrl, setPrevUrl] = useState('');
   const [loading, setLoading] = useState(true);
-  const initialURL = 'https://pokeapi.co/api/v2/pokemon?limit=33'
+  const initialURL = 'https://pokeapi.co/api/v2/pokemon?limit=151'
 
   useEffect(() => {
     // Initial API call to get and set data in state
@@ -58,23 +57,27 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <Navbar />
-      { loading ? <h1>Loading...</h1> : (
-        <>
-          <div className='btn-wrapper text-right mt-5'>
-            <button className='btn' onClick={prevPage}>Previous</button>
-            <button className='btn' onClick={nextPage}>Next</button>
-          </div>
-          <div className="grid-container">
-            {pokemonData.map((pokemon, index) => {
-              return <Card  key={index} pokemon={pokemon}/>
-            })}
-          </div>
-        </>
-      )}
-    </div>
+
+      <div className="App">
+        <Navbar />
+        <Pokedex loading={loading} pokemonData={pokemonData}/>       
+      </div>
+
   );
 }
 
 export default App;
+
+// { loading ? <h1>Loading...</h1> : (
+//               <>
+//                 <div className='btn-wrapper text-right mt-5'>
+//                   <button className='btn' onClick={prevPage}>Previous</button>
+//                   <button className='btn' onClick={nextPage}>Next</button>
+//                 </div>
+//                 <div className="grid-container">
+//                   {pokemonData.map((pokemon, index) => {
+//                     return <Card  key={index} pokemon={pokemon}/>
+//                   })}
+//                 </div>
+//               </>
+//             )}

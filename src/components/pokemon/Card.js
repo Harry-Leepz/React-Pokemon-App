@@ -2,7 +2,8 @@ import React from 'react'
 
 const Card = ({ pokemon }) => {
     return (
-        <div className='card mt-2 text-center rounded-0'>
+
+        <div className='card mt-5 text-center rounded-0'>
             <div className="card-header bg-orange">
                 <p className='text-dark font-weight-bold'># {pokemon.id}</p>
             </div>
@@ -11,6 +12,7 @@ const Card = ({ pokemon }) => {
                 <p className='text-dark font-weight-bold'>{pokemon.name}</p>
             </div>
         </div>
+
     )
 }
 
