@@ -34,7 +34,7 @@ body {
   width: 50%;
   display: grid;
   margin: 0 auto;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   grid-gap: 5rem;
 }
 
@@ -53,12 +53,12 @@ body {
 .btn {
   border-style: none;
   padding: 5px 10px;
-  margin-right: 2px;
+  margin-right: 4px;
   border-radius: 15px;
   background: #30a7d7;
   color: #fff;
   font-size: 1em;
-  width: 10rem;
+  width: 7rem;
 }
 
 .btn-wrapper {
