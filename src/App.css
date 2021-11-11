@@ -31,18 +31,18 @@ body {
 }
 
 .grid-container {
-  width: 70%;
+  width: 50%;
   display: grid;
   margin: 0 auto;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 5rem;
 }
 
 /* Card Css */
 
 .image {
-  width: 10em;
-  height: 10em;
+  width: 7em;
+  height: 7em;
 }
 
 .bg-orange {
