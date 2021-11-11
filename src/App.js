@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAllPokemon, getPokemon } from './services/Pokemon';
 import Navbar from './components/layout/Navbar';
+import Card from './components/pokemon/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -27,6 +28,7 @@ function App() {
     fetchData()
   }, [])
 
+  // Iterate over the data and make a fetch request for each individual Pokemons Data
   const loadingPokemon = async (data) => {
     let _pokemonData = await Promise.all(data.map(async pokemon => {
       let pokemonRecord = await getPokemon(pokemon.url)
@@ -40,7 +42,13 @@ function App() {
     <div className="App">
       <Navbar />
       { loading ? <h1>Loading...</h1> : (
-        <h1>Data is fetched.....</h1>
+        <>
+          <div className="grid-container">
+            {pokemonData.map((pokemon, index) => {
+              return <Card  key={index} pokemon={pokemon}/>
+            })}
+          </div>
+        </>
       )}
     </div>
   );

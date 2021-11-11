@@ -9,6 +9,8 @@ export async function getAllPokemon(url) {
     });
 }
 
+// Get a single Pokemons data
+// https://pokeapi.co/api/v2/pokemon/1
 export async function getPokemon(url) {
     return new Promise((resolve, reject) => {
         fetch(url).then(res => res.json()).then(data => {
