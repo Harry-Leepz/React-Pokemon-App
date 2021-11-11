@@ -6,7 +6,6 @@ export default class Pokemon extends Component {
         pokemonId:'',
         imageUrl:'',
         types: [],
-        description: '',
         statTitleWidth: 3,
         statBarWidth: 9,
         stats: {
@@ -19,13 +18,8 @@ export default class Pokemon extends Component {
         },
         height: '',
         weight: '',
-        eggGroups: '',
-        catchRate: '',
         abilities: '',
-        genderRatioMale: '',
-        genderRatioFemale: '',
         evs: '',
-        hatchSteps: '',
     }
 
     async componentDidMount() {
@@ -33,7 +27,6 @@ export default class Pokemon extends Component {
 
         //Urls for API requests
         const pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonId}/`;
-        const pokemonSpeciesUrl = `https://pokeapi.co/api/v2/pokemon-species/${pokemonId}/`;
 
         // Get Pokemon Information
         const pokemonRes = await axios.get(pokemonUrl);
@@ -68,8 +61,45 @@ export default class Pokemon extends Component {
                 break;
             }
           });
+        
+        // Convert Decimeters to Feet... The + 0.0001 * 100 ) / 100 is for rounding to two decimal places :)
+        const height = Math.round((pokemonRes.data.height * 0.328084 + 0.00001) * 100) / 100;
 
-        this.setState({name, imageUrl})
+        // Convert to pounds
+        const weight = Math.round((pokemonRes.data.weight * 0.220462 + 0.00001) * 100) / 100;
+
+        const types = pokemonRes.data.types.map(type => type.type.name)
+        
+        const abilities = pokemonRes.data.abilities
+            .map(ability => {
+                return ability.ability.name
+                .toLowerCase()
+                .split('-')
+                .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+                .join(' ');
+            })
+            .join(', ');
+
+        const evs = pokemonRes.data.stats
+            .filter(stat => {
+              if (stat.effort > 0) {
+                return true;
+              }
+              return false;
+            })
+            .map(stat => {
+              return `${stat.effort} ${stat.stat.name
+                .toLowerCase()
+                .split('-')
+                .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+                .join(' ')}`;
+            })
+            .join(', ')
+
+        this.setState({name, imageUrl, pokemonId, types, height, weight, abilities, evs,
+            stats: { hp, attack, defense, speed, specialAttack, specialDefense
+            }
+        })
     }
 
     render() {
