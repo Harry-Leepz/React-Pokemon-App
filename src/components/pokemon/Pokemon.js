@@ -1,5 +1,26 @@
 import React, { Component } from "react";
 import axios from "axios";
+
+const TYPE_COLORS = {
+    bug: 'B1C12E',
+    dark: '4F3A2D',
+    dragon: '755EDF',
+    electric: 'FCBC17',
+    fairy: 'F4B1F4',
+    fighting: '823551D',
+    fire: 'E73B0C',
+    flying: 'A3B3F7',
+    ghost: '6060B2',
+    grass: '74C236',
+    ground: 'D3B357',
+    ice: 'A3E7FD',
+    normal: 'C8C4BC',
+    poison: '934594',
+    psychic: 'ED4882',
+    rock: 'B9A156',
+    steel: 'B5B5C3',
+    water: '3295F6'
+  };
 export default class Pokemon extends Component {
     state={
         name:'',
@@ -104,9 +125,37 @@ export default class Pokemon extends Component {
 
     render() {
         return (
-            <div>
-                <h1>{this.state.name}</h1>
-                <img src={this.state.imageUrl} alt={this.state.name} />
+            <div className="col mt-5">
+                <div className="card" style={{ backgroundColor:'#212121', border: '3px #fafafa solid' }}>
+                    <div className="card-header">
+                        <div className="row">
+                            <div className="col-5">
+                                <p className='font-weight-bold text-light'># {this.state.pokemonId} <span className='font-weight-bold ml-2'>{this.state.name }</span></p>
+                            </div>
+                            <div className="col-7">
+                                <div className="float-right">
+                                {this.state.types.map(type => (
+                                    <span
+                                    key={type}
+                                    className="badge badge-pill mr-1"
+                                    style={{
+                                        backgroundColor: `#${TYPE_COLORS[type]}`,
+                                        color: 'white'
+                                    }}
+                                    >
+                                    {type
+                                        .toLowerCase()
+                                        .split(' ')
+                                        .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+                                        .join(' ')}
+                                    </span>
+                                ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="card-body"></div>
+                </div>
             </div>
         )
     }
