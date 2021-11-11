@@ -17,12 +17,20 @@ function App() {
   useEffect(() => {
     async function fetchData() {
       let response = await getAllPokemon(initialURL)
+      console.log(response);
+      setNextUrl(response.nest)
+      setPrevUrl(response.prev)
+      setLoading(false)
     }
+    fetchData()
   }, [])
 
   return (
     <div className="App">
       <Navbar />
+      { loading ? <h1>Loading...</h1> : (
+        <h1>Data is fetched.....</h1>
+      )}
     </div>
   );
 }
