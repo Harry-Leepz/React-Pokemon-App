@@ -6,7 +6,7 @@ import Navbar from './components/layout/Navbar';
 import About from './components/layout/About';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { Pokemon } from './components/pokemon/Pokemon';
+import  Pokemon  from './components/pokemon/Pokemon';
 
 function App() {
   // State Variables
@@ -68,7 +68,7 @@ function App() {
               <Pokedex loading={loading} pokemonData={pokemonData}/>
             )} />
             <Route exact path='/about' component={About} /> 
-            <Route exact path='/:pokemonId' component={Pokemon}/>
+            <Route exact path='/pokemon/:pokemonId' component={Pokemon}/>
           </Switch>
         </div>           
       </div>

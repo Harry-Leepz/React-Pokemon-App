@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Card = ({ pokemon }) => {
     return (
-        <Link to={`/${pokemon.id}`} >
+        <Link to={`/pokemon/${pokemon.id}`} >
             <div className='card mt-5 text-center rounded-0'>
                 <div className="card-header bg-orange">
                     <p className='text-dark font-weight-bold'># {pokemon.id}</p>
