@@ -7,10 +7,10 @@ const Navbar = () => {
             <h4 className='text-light font-weight-bold'>Something Pokemon</h4>
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item ml-3">
-                    <Link to='/'>Home</Link>
+                    <Link className='text-dark font-weight-bold' to='/'>Home</Link>
                 </li>
                 <li className="nav-item ml-3">
-                    <Link to='/about'>About</Link>
+                    <Link className='text-dark font-weight-bold' to='/about'>About</Link>
                 </li>
             </ul>
         </nav>
