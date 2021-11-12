@@ -4,9 +4,11 @@ import { getAllPokemon, getPokemon } from './services/Pokemon';
 import Pokedex from './components/pokemon/Pokedex';
 import Navbar from './components/layout/Navbar';
 import About from './components/layout/About';
+import  Pokemon  from './components/pokemon/Pokemon';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import  Pokemon  from './components/pokemon/Pokemon';
+
+
 
 function App() {
   // State Variables
@@ -65,7 +67,7 @@ function App() {
         <div className="container-fluid">
           <Switch>
             <Route exact path='/'   render={(props) => (
-              <Pokedex loading={loading} pokemonData={pokemonData}/>
+              <Pokedex loading={loading} pokemonData={pokemonData} /> 
             )} />
             <Route exact path='/about' component={About} /> 
             <Route exact path='/pokemon/:pokemonId' component={Pokemon}/>
